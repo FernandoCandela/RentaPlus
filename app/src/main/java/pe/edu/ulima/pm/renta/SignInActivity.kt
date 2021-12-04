@@ -35,6 +35,10 @@ class SignInActivity : AppCompatActivity() {
                 }
             }
         }
+        binding.signUpTextView.setOnClickListener {
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     public override fun onStart() {
