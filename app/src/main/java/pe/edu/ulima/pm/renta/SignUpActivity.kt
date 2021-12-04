@@ -14,15 +14,16 @@ import java.util.regex.Pattern
 class SignUpActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivitySignUpBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
 
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         auth = Firebase.auth
 
-        binding.signUpButton.setOnClickListener{
+        binding.signUpButton.setOnClickListener {
+
             val mEmail = binding.emailEditText.text.toString()
             val mPassword = binding.passwordEditText.text.toString()
             val mRepeatPassword = binding.repeatPasswordEditText.text.toString()
@@ -44,24 +45,41 @@ class SignUpActivity : AppCompatActivity() {
             } else {
                 createAccount(mEmail, mPassword)
             }
+
         }
+
         binding.backImageView.setOnClickListener {
             val intent = Intent(this, SignInActivity::class.java)
             this.startActivity(intent)
         }
+
     }
 
-    private fun createAccount(email:String, password:String) {
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this){task ->
-                if (task.isSuccessful){
-                }else{
-                    Toast.makeText(baseContext, "Autentificacion erronea", Toast.LENGTH_SHORT)
-                        .show()
-                }
-
+    public override fun onStart() {
+        super.onStart()
+        val currentUser = auth.currentUser
+        if(currentUser != null){
+            if(currentUser.isEmailVerified){
+                val intent = Intent(this, MainActivity::class.java)
+                this.startActivity(intent)
+            } else {
+                val intent = Intent(this, CheckEmailActivity::class.java)
+                this.startActivity(intent)
             }
+        }
+    }
 
+    private fun createAccount(email: String, password: String) {
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val intent = Intent(this, CheckEmailActivity::class.java)
+                    this.startActivity(intent)
+                } else {
+                    Toast.makeText(this, "No se pudo crear la cuenta. Vuelva a intertarlo",
+                        Toast.LENGTH_SHORT).show()
+                }
+            }
     }
 
 }

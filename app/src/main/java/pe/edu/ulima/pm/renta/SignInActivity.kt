@@ -20,36 +20,49 @@ class SignInActivity : AppCompatActivity() {
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
         auth = Firebase.auth
+
         binding.signInAppCompatButton.setOnClickListener {
             val mEmail = binding.emailEditText.text.toString()
             val mPassword = binding.passwordEditText.text.toString()
+
             when {
-                mEmail.isEmpty() || mPassword.isEmpty() -> {
-                    Toast.makeText(
-                        baseContext, "Correo o Contraseña incorrectos.",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                mPassword.isEmpty() || mEmail.isEmpty() -> {
+                    Toast.makeText(this, "Email o contraseña o incorrectos.",
+                        Toast.LENGTH_SHORT).show()
                 }
                 else -> {
-                    SingIn(mEmail, mPassword)
+                    signIn(mEmail, mPassword)
                 }
             }
+
         }
+
         binding.signUpTextView.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
-            startActivity(intent)
+            this.startActivity(intent)
         }
+
+/*        binding.recoveryAccountTextView.setOnClickListener {
+            val intent = Intent(this, AccountRecoveryActivity::class.java)
+            this.startActivity(intent)
+        }*/
+
     }
 
     public override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
         if(currentUser != null){
-            reload()
+            if(currentUser.isEmailVerified){
+                reload()
+            } else {
+                val intent = Intent(this, CheckEmailActivity::class.java)
+                this.startActivity(intent)
+            }
         }
     }
 
-    private fun SingIn(email: String, password: String) {
+    private fun signIn(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -57,10 +70,8 @@ class SignInActivity : AppCompatActivity() {
                     reload()
                 } else {
                     Log.w("TAG", "signInWithEmail:failure", task.exception)
-                    Toast.makeText(
-                        baseContext, "Authentication failed",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(baseContext, "Email o contraseña o incorrectos.",
+                        Toast.LENGTH_SHORT).show()
                 }
             }
     }
@@ -69,4 +80,5 @@ class SignInActivity : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         this.startActivity(intent)
     }
+
 }
