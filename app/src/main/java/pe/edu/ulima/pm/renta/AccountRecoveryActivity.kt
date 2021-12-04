@@ -1,4 +1,4 @@
-package com.example.firebasetest
+package pe.edu.ulima.pm.renta
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

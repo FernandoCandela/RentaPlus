@@ -42,10 +42,10 @@ class SignInActivity : AppCompatActivity() {
             this.startActivity(intent)
         }
 
-/*        binding.recoveryAccountTextView.setOnClickListener {
+      binding.recoveryAccountTextView.setOnClickListener {
             val intent = Intent(this, AccountRecoveryActivity::class.java)
             this.startActivity(intent)
-        }*/
+        }
 
     }
 
