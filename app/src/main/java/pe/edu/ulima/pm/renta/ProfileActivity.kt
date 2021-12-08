@@ -13,7 +13,6 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import pe.edu.ulima.pm.renta.databinding.ActivityProfileBinding
 
-@Suppress("DEPRECATION")
 class ProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileBinding
     private lateinit var auth: FirebaseAuth
@@ -35,7 +34,7 @@ class ProfileActivity : AppCompatActivity() {
             fileManager()
         }
 
-/*        binding.deleteAccountTextView.setOnClickListener {
+       binding.deleteAccountTextView.setOnClickListener {
             val intent = Intent(this, DeleteAccountActivity::class.java)
             this.startActivity(intent)
         }
@@ -43,7 +42,7 @@ class ProfileActivity : AppCompatActivity() {
         binding.updatePasswordTextView.setOnClickListener {
             val intent = Intent(this, UpdatePasswordActivity::class.java)
             this.startActivity(intent)
-        }*/
+        }
 
         binding.signOutImageView.setOnClickListener {
             signOut()
@@ -60,12 +59,16 @@ class ProfileActivity : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(
-                        this, "Se realizaron los cambios correctamente.",
+                        this, "Usuario actualizado correctamente.",
                         Toast.LENGTH_SHORT
                     ).show()
                     updateUI()
                 }
             }
+    }
+    override fun onBackPressed() {
+        val intent = Intent(this, MainActivity::class.java)
+        this.startActivity(intent)
     }
     private fun fileManager() {
         val intent = Intent(Intent.ACTION_GET_CONTENT)
@@ -78,12 +81,11 @@ class ProfileActivity : AppCompatActivity() {
         if (requestCode == fileResult) {
             if (resultCode == RESULT_OK && data != null) {
                 val uri = data.data
-
                 uri?.let { imageUpload(it) }
-
             }
         }
     }
+
     private fun imageUpload(mUri: Uri) {
 
         val user = auth.currentUser
@@ -111,8 +113,6 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
-
-
     private  fun updateUI () {
         val user = auth.currentUser
 
@@ -137,7 +137,6 @@ class ProfileActivity : AppCompatActivity() {
                 .placeholder(R.drawable.profile_photo)
                 .into(binding.bgProfileImageView)
         }
-
     }
 
     private  fun signOut(){
