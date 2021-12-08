@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -20,9 +21,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import pe.edu.ulima.pm.renta.databinding.ActivityMainBinding
+import pe.edu.ulima.pm.renta.model.Inmueble
+import pe.edu.ulima.pm.renta.ui.inmueble.InmuebleFragment
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var auth: FirebaseAuth
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
@@ -58,6 +60,10 @@ class MainActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.nav_home -> {
                     Toast.makeText(this, "Clicked item one", Toast.LENGTH_SHORT).show()
+                    val fragment = InmuebleFragment()
+                    val ft = supportFragmentManager.beginTransaction()
+                    ft.replace(R.id.nav_host_fragment_content_main2,fragment)
+                    ft.commit()
                     true
                 }
                 R.id.nav_gallery -> {

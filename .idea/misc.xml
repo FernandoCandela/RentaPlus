@@ -7,6 +7,8 @@
         <entry key="..\:/DATA/ULIMA/10mo ciclo/Progra Movil/Renta/app/src/main/res/drawable/ic_back.xml" value="0.3769230769230769" />
         <entry key="..\:/DATA/ULIMA/10mo ciclo/Progra Movil/Renta/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3828125" />
         <entry key="..\:/DATA/ULIMA/10mo ciclo/Progra Movil/Renta/app/src/main/res/drawable/ic_logo.xml" value="0.3098958333333333" />
+        <entry key="..\:/DATA/ULIMA/10mo ciclo/Progra Movil/Renta/app/src/main/res/drawable/ic_menu_camera.xml" value="0.3828125" />
+        <entry key="..\:/DATA/ULIMA/10mo ciclo/Progra Movil/Renta/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.3828125" />
         <entry key="..\:/DATA/ULIMA/10mo ciclo/Progra Movil/Renta/app/src/main/res/drawable/ic_user.xml" value="0.3828125" />
         <entry key="..\:/DATA/ULIMA/10mo ciclo/Progra Movil/Renta/app/src/main/res/drawable/side_nav_bar.xml" value="0.3828125" />
         <entry key="..\:/DATA/ULIMA/10mo ciclo/Progra Movil/Renta/app/src/main/res/layout/activity_account_recovery.xml" value="0.20520833333333333" />
@@ -24,8 +26,11 @@
         <entry key="..\:/DATA/ULIMA/10mo ciclo/Progra Movil/Renta/app/src/main/res/layout/fragment_gallery.xml" value="0.20520833333333333" />
         <entry key="..\:/DATA/ULIMA/10mo ciclo/Progra Movil/Renta/app/src/main/res/layout/fragment_home.xml" value="0.20520833333333333" />
         <entry key="..\:/DATA/ULIMA/10mo ciclo/Progra Movil/Renta/app/src/main/res/layout/fragment_inmueble.xml" value="0.36666666666666664" />
+        <entry key="..\:/DATA/ULIMA/10mo ciclo/Progra Movil/Renta/app/src/main/res/layout/fragment_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/DATA/ULIMA/10mo ciclo/Progra Movil/Renta/app/src/main/res/layout/fragment_item_list.xml" value="0.35260416666666666" />
         <entry key="..\:/DATA/ULIMA/10mo ciclo/Progra Movil/Renta/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
         <entry key="..\:/DATA/ULIMA/10mo ciclo/Progra Movil/Renta/app/src/main/res/layout/fragment_slideshow.xml" value="0.20520833333333333" />
+        <entry key="..\:/DATA/ULIMA/10mo ciclo/Progra Movil/Renta/app/src/main/res/layout/item_inmueble.xml" value="0.36666666666666664" />
         <entry key="..\:/DATA/ULIMA/10mo ciclo/Progra Movil/Renta/app/src/main/res/layout/nav_header_main.xml" value="0.36666666666666664" />
         <entry key="..\:/DATA/ULIMA/10mo ciclo/Progra Movil/Renta/app/src/main/res/layout/profile_fragment.xml" value="0.20520833333333333" />
         <entry key="..\:/DATA/ULIMA/10mo ciclo/Progra Movil/Renta/app/src/main/res/menu/activity_main_drawer.xml" value="0.67" />

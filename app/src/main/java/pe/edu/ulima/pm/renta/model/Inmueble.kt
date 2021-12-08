@@ -6,5 +6,6 @@ data class Inmueble(
     val id: String,
     val direccion: String,
     val idUsuario: String,
-    val titulo: String
+    val titulo: String,
+    val url: String
 ) : Serializable

@@ -32,7 +32,7 @@
         tools:ignore="UseCompoundDrawables">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/iviInmueble"
             android:layout_width="148dp"
             android:layout_height="131dp"
             android:contentDescription="@string/all"

@@ -20,7 +20,7 @@
         tools:ignore="UseCompoundDrawables">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/iviInmueble"
             android:layout_width="206dp"
             android:layout_height="match_parent"
             android:contentDescription="@string/all"
