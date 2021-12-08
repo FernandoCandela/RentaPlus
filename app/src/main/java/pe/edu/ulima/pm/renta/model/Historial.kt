@@ -2,7 +2,7 @@ package pe.edu.ulima.pm.renta.model
 
 import java.io.Serializable
 
-data class historial(
+data class Historial(
     val id: String,
     val idArrendatario: String,
     val idFactura: String,

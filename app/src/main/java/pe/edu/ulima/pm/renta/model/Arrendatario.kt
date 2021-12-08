@@ -2,7 +2,7 @@ package pe.edu.ulima.pm.renta.model
 
 import java.io.Serializable
 
-data class arrendatario(
+data class Arrendatario(
     val id: String,
     val apellidos: String,
     val email: String,

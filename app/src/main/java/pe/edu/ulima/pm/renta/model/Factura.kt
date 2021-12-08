@@ -2,9 +2,8 @@ package pe.edu.ulima.pm.renta.model
 
 import java.io.Serializable
 
-data class inmueble(
+data class Factura(
     val id: String,
-    val direccion: String,
-    val idUsuario: String,
-    val titulo: String
+    val fecha_pago: String,
+    val monto: Float
 ) : Serializable
