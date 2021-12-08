@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
@@ -52,6 +53,38 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+        navView.setNavigationItemSelectedListener { menuItem ->
+            var nav_profileIsSelect = false
+            when (menuItem.itemId) {
+                R.id.nav_home -> {
+                    Toast.makeText(this, "Clicked item one", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.nav_gallery -> {
+                    Toast.makeText(this, "Clicked item two", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.nav_slideshow -> {
+                    Toast.makeText(this, "Clicked item tree", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.nav_profile -> {
+                    val intent = Intent(this, ProfileActivity::class.java)
+                    this.startActivity(intent)
+                    nav_profileIsSelect = true
+                    true
+                }
+                else -> {
+                    true
+                }
+            }
+            if (nav_profileIsSelect){
+                menuItem.isChecked = true
+            }
+            drawerLayout.closeDrawers()
+            true
+        }
+
         updateUI()
     }
 
@@ -93,6 +126,7 @@ class MainActivity : AppCompatActivity() {
             headerView.findViewById<TextView>(R.id.textViewUser).text = user.displayName
             headerView.findViewById<TextView>(R.id.textViewEmail).text = user.email
             Glide.with(this).load(user.photoUrl)
+                .centerCrop()
                 .placeholder(R.drawable.profile_photo)
                 .into(headerView.findViewById(R.id.imageViewPhoto))
         }
