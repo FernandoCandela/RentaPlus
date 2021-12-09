@@ -1,6 +1,5 @@
 package pe.edu.ulima.pm.renta.ui.inmueble
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -37,7 +36,7 @@ class InmuebleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val idUser = FirebaseAuth.getInstance().currentUser!!.uid
         print(idUser)
-        InmuebleManager().getInmueblesByUserFirebase(idUser,{ vgList : MutableList<Inmueble> ->
+        InmuebleManager().getInmueblesByUser(idUser,{ vgList : MutableList<Inmueble> ->
             val rviInmuebles = view.findViewById<RecyclerView>(R.id.rviInmuebles)
             rviInmuebles.adapter = InmuebleListAdapter(
                 vgList,

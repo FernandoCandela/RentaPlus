@@ -4,7 +4,9 @@ import java.io.Serializable
 
 data class Historial(
     val id: String,
-    val idArrendatario: String,
-    val idFactura: String,
-    val idInmueble: String
+    val arrendatario: String,
+    val monto: String,
+    val fecha_pago: String,
+    val idInmueble: String,
+    val url_factura: String
 ) : Serializable

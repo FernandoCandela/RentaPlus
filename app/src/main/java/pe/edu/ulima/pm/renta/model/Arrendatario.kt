@@ -4,6 +4,7 @@ import java.io.Serializable
 
 data class Arrendatario(
     val id: String,
+    val activo: Boolean,
     val apellidos: String,
     val email: String,
     val fecha_pago: String,
