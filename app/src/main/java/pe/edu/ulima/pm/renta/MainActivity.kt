@@ -5,10 +5,8 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -21,8 +19,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import pe.edu.ulima.pm.renta.databinding.ActivityMainBinding
-import pe.edu.ulima.pm.renta.model.Inmueble
-import pe.edu.ulima.pm.renta.ui.inmueble.InmuebleFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -49,47 +45,11 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_profile
+                R.id.nav_home
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-        navView.setNavigationItemSelectedListener { menuItem ->
-            var nav_profileIsSelect = false
-            when (menuItem.itemId) {
-                R.id.nav_home -> {
-                    Toast.makeText(this, "Clicked item one", Toast.LENGTH_SHORT).show()
-                    val fragment = InmuebleFragment()
-                    val ft = supportFragmentManager.beginTransaction()
-                    ft.replace(R.id.nav_host_fragment_content_main2,fragment)
-                    ft.commit()
-                    true
-                }
-                R.id.nav_gallery -> {
-                    Toast.makeText(this, "Clicked item two", Toast.LENGTH_SHORT).show()
-                    true
-                }
-                R.id.nav_slideshow -> {
-                    Toast.makeText(this, "Clicked item tree", Toast.LENGTH_SHORT).show()
-                    true
-                }
-                R.id.nav_profile -> {
-                    val intent = Intent(this, ProfileActivity::class.java)
-                    this.startActivity(intent)
-                    nav_profileIsSelect = true
-                    true
-                }
-                else -> {
-                    true
-                }
-            }
-            if (nav_profileIsSelect){
-                menuItem.isChecked = true
-            }
-            drawerLayout.closeDrawers()
-            true
-        }
 
         updateUI()
     }
@@ -110,7 +70,11 @@ class MainActivity : AppCompatActivity() {
             signOut()
             true
         }
-
+        R.id.action_profile -> {
+            val intent = Intent(this, ProfileActivity::class.java)
+            this.startActivity(intent)
+            true
+        }
         else -> {
             // If we got here, the user's action was not recognized.
             // Invoke the superclass to handle it.
